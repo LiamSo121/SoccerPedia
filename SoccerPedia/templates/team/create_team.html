@@ -1,0 +1,21 @@
+<!-- courses/templates/courses/register_course.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Team</title>
+</head>
+<link rel="stylesheet" type="text/css" href="{% static 'team/create_team.css' %}">
+<body>
+    <div class="course-form">
+        <h2>Create New Team</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Register Team</button>
+        </form>
+    </div>
+</body>
+</html>
