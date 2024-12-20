@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League Standings</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">League Standings</h1>
+
+        <!-- Navigation Buttons -->
+        <div class="mb-4 text-center">
+            <a href="/" class="btn btn-primary me-2">Home</a>
+            <a href="{% url 'present_leagues' %}" class="btn btn-secondary">Return to League Selection</a>
+        </div>
+
+        {% if standings %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Position</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                            <th>Played</th>
+                            <th>Won</th>
+                            <th>Draw</th>
+                            <th>Lost</th>
+                            <th>Goal Difference</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in standings %}
+                        <tr>
+                            <td>{{ team.position }}</td>
+                            <td>
+                                <img src="{{ team.crest }}" alt="Crest" style="max-height: 30px;" class="me-2">
+                                {{ team.name }}
+                            </td>
+                            <td>{{ team.points }}</td>
+                            <td>{{ team.played }}</td>
+                            <td>{{ team.won }}</td>
+                            <td>{{ team.draw }}</td>
+                            <td>{{ team.lost }}</td>
+                            <td>{{ team.goal_difference }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center text-danger">No data available.</p>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS (Optional for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

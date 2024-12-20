@@ -1,0 +1,24 @@
+body {
+    background-color: #f4f7f6;
+    padding-top: 30px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center all content inside the container */
+}
+
+.team-logo {
+    max-width: 200px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.btn-back, .btn-primary {
+    margin-top: 30px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football News</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Link to the external CSS file -->
+    <link href="{% static 'league/league_news.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1>Latest Football News</h1>
+    {% if news %}
+        {% for article in news %}
+            <div class="news-item">
+                <img src="{{ article.imageUrl }}" alt="{{ article.title }}">
+                <div class="content">
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.title }}</p>
+                    <a href="{{ article.page.url }}" target="_blank">Read more</a>
+                    <div class="source">
+                        <img src="{{ article.sourceIconUrl }}" alt="{{ article.sourceStr }}">
+                        <span>{{ article.sourceStr }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-news">No News For This League</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
