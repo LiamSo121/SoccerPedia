@@ -2,7 +2,11 @@ from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render, get_object_or_404,redirect
 from .models import Team,YoutubeVideo
 from Team.Team_Helpers import Team_Helper
-from .TeamForm import TeamForm
+from .TeamForm import TeamForm, YoutubeVideoFormSet
+from PIL import Image
+import os
+from io import BytesIO
+from django.core.files.base import ContentFile
 
 # Create your views here.
 def team_list(request):
@@ -25,15 +29,29 @@ def get_team_info(request,team_name):
         'video_data': video_data,}
     return render(request,'team/team_info.html', context= context)
 
+
 def create_team(request):
     if request.method == 'POST':
         form = TeamForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+        formset = YoutubeVideoFormSet(request.POST)
+
+        if form.is_valid() and formset.is_valid():
+            # Save the team instance first
+            team = form.save()
+
+            # Save the related YouTube video instances
+            youtube_videos = formset.save(commit=False)
+            for video in youtube_videos:
+                video.team = team  # Associate the video with the team
+                video.save()
+
             return redirect('team_list')
         else:
             print(form.errors)
+            print(formset.errors)
     else:
         form = TeamForm()
-        return render(request,'team/create_team.html', {'form': form})
+        formset = YoutubeVideoFormSet()
+
+    return render(request, 'team/create_team.html', {'form': form, 'formset': formset})
 

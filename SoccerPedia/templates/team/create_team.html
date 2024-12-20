@@ -1,4 +1,3 @@
-<!-- courses/templates/courses/register_course.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,15 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Team</title>
+    <link href="{% static 'team/create_team.css' %}" rel="stylesheet">
 </head>
-<link rel="stylesheet" type="text/css" href="{% static 'team/create_team.css' %}">
 <body>
     <div class="course-form">
         <h2>Create New Team</h2>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form }}
-            <button type="submit">Register Team</button>
+
+            <!-- Render TeamForm fields -->
+            {{ form.as_p }}
+
+            <!-- Render YouTube Video fields (formset) -->
+            <h3>YouTube Videos</h3>
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Register Team</button>
         </form>
     </div>
 </body>
