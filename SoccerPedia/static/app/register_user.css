@@ -1,0 +1,18 @@
+/* Custom CSS Styles */
+
+/* Custom header background */
+.custom-header {
+    background-color: #007bff; /* Bootstrap primary blue color */
+    padding: 20px;
+}
+
+/* Form container styling */
+.container {
+    margin-top: 50px;
+}
+
+/* Add subtle shadow to the card */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -19,6 +19,7 @@ def present_leagues(request):
 
 
 def league_details_by_country(request, country):
+
     league = League.objects.get(country=country)
     if league:
         return render(request, "league/league.html", {"league": league})

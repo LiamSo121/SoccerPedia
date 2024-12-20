@@ -23,8 +23,22 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                        <a class="nav-link text-white" href="{% url 'about' %}">About</a>
                     </li>
+                    <!-- Display active user -->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="nav-link text-white">Welcome, {{ user.username }}!</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black" href="{% url 'user_logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'user_login' %}">Login</a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>
