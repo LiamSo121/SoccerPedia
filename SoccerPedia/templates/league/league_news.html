@@ -20,7 +20,7 @@
                 <div class="content">
                     <h2>{{ article.title }}</h2>
                     <p>{{ article.title }}</p>
-                    <a href="{{ article.page.url }}" target="_blank">Read more</a>
+                    <a href="{{ article.page.url }}" target="_blank" class="btn-read-more">Read more</a>
                     <div class="source">
                         <img src="{{ article.sourceIconUrl }}" alt="{{ article.sourceStr }}">
                         <span>{{ article.sourceStr }}</span>
@@ -31,6 +31,11 @@
     {% else %}
         <p class="no-news">No News For This League</p>
     {% endif %}
+    <div class="mb-4 text-center">
+        <a href="/" class="btn btn-blue me-2">Home</a>
+        <a href="{% url 'present_leagues' %}" class="btn btn-blue">Return to League Selection</a>
+    </div>
+
 </div>
 
 </body>

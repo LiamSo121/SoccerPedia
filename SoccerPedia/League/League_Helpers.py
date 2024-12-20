@@ -21,7 +21,6 @@ class League_Helper:
         response = requests.get(url, headers=headers).json()
         for country_dict in response['response']['countries']:
             if country_name == country_dict['name']:
-                print(country_dict['ccode'])
                 return country_dict['ccode']
 
 
