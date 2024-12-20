@@ -55,23 +55,3 @@ def create_team(request):
 
     return render(request, 'team/create_team.html', {'form': form, 'formset': formset})
 
-
-def resize_image(image_field, size=(150, 150)):
-    # Open the image from the ImageField's file attribute
-    img = Image.open(image_field.file)
-
-    # Resize the image
-    img = img.resize(size, Image.Resampling.LANCZOS)
-
-    # Convert to RGB if not already in RGB mode
-    if img.mode != 'RGB':
-        img = img.convert('RGB')
-
-    # Extract the file name and extension
-    file_name, file_extension = os.path.splitext(image_field.name)
-
-    # Save the resized image with the same file name
-    resized_image_path = f"{file_name}"
-    img.save(resized_image_path)
-
-    return resized_image_path
