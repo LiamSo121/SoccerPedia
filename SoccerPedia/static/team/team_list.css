@@ -1,83 +1,72 @@
-/* Team Card Styling */
+/* Interactive background */
+body {
+    background: linear-gradient(45deg, #f3f4f6, #d1e7ff);
+    animation: backgroundAnimation 5s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(45deg, #f3f4f6, #d1e7ff);
+    }
+    50% {
+        background: linear-gradient(45deg, #d1e7ff, #f3f4f6);
+    }
+    100% {
+        background: linear-gradient(45deg, #f3f4f6, #d1e7ff);
+    }
+}
+
+/* Style for team cards */
 .team-card {
-    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
-    margin: 10px;
-    text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .team-logo {
-    max-width: 100px;
-    height: auto;
+    max-width: 100%;
+    max-height: 200px;
     margin-bottom: 10px;
-    cursor: pointer;
 }
 
-.team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.info-text {
-    font-size: 1rem;
-    color: #555;
-    margin-top: 10px;
-}
-
-.team-card h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-.team-card p {
-    font-size: 1rem;
-    color: #333;
-}
-
-.btn-link {
-    font-size: 1rem;
-    text-decoration: none;
-    color: #007bff;
-    font-weight: 600;
-}
-
-.btn-link:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-.btn-view {
-    margin-top: 10px;
+/* Button Styling */
+.btn-view, .btn-info {
     background-color: #007bff;
     color: white;
-    border: none;
+    margin-top: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    font-weight: bold;
+    text-decoration: none;
 }
 
-.btn-view:hover {
+.btn-view:hover, .btn-info:hover {
     background-color: #0056b3;
 }
 
-.btn-info {
-    margin-top: 10px;
+/* Button for home */
+.btn-home {
     background-color: #28a745;
     color: white;
-    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    font-weight: bold;
+    text-decoration: none;
 }
 
-.btn-info:hover {
+.btn-home:hover {
     background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-card {
+        margin-bottom: 15px;
+    }
 }
