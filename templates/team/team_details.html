@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ team.name }} - Team Details{% endblock %}
+
+{% block custom_css %}
+    <link href="{% static 'team/team_details.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="team-details-card">
+            <h1 class="team-name">{{ team.name }}</h1>
+
+            <div class="team-info">
+                <p><strong>Year of Foundation:</strong> {{ team.year_of_foundation }}</p>
+                <p><strong>Trophies:</strong> {{ team.number_of_trophies }}</p>
+                <p><strong>Country:</strong> {{ team.league.country }}</p>
+                <p><strong>League:</strong> {{ team.league.name }}</p>
+                <p><strong>Stadium:</strong> {{ team.stadium_name }}</p>
+                <p><strong>City:</strong> {{ team.city }}</p>
+            </div>
+
+            {% if team.logo %}
+                <img src="{{ team.logo.url }}" alt="{{ team.name }} Logo" class="team-logo">
+            {% else %}
+                <p>No logo available</p>
+            {% endif %}
+
+            {% if team.website %}
+                <p><a href="{{ team.website }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Official Website</a></p>
+            {% endif %}
+
+            <!-- Back to Team List Button -->
+            <a href="{% url 'team_list' %}" class="btn btn-secondary btn-back">Back to Team List</a>
+        </div>
+    </div>
+{% endblock %}

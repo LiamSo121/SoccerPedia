@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ league.name }} - League Details{% endblock %}
+{% load static %}
+{% block custom_css %}
+    <link href="{% static 'league/league.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="card shadow-lg">
+        <div class="card-header">
+            <h2>{{ league.name }} - League Details</h2>
+        </div>
+        <div class="card-body">
+            <!-- Navigation Buttons -->
+            <div class="btn-container">
+                <a href="/" class="btn btn-custom">Home</a>
+                <a href="{% url 'get_news' country=league.country %}" class="btn btn-custom">Get News</a>
+                <a href="{% url 'get_league_standings' country=league.country %}" class="btn btn-custom">View League Standings</a>
+                <a href="{% url 'present_leagues' %}" class="btn btn-custom">Back to Choose League</a>
+            </div>
+
+            <div class="row">
+                <!-- League Logo -->
+                <div class="col-md-4 text-center">
+                    {% if league.logo %}
+                        <img src="{{ league.logo.url }}" alt="League Logo" class="league-logo">
+                    {% else %}
+                        <img src="https://via.placeholder.com/150" alt="No Logo Available" class="league-logo">
+                    {% endif %}
+                </div>
+
+                <!-- League Information -->
+                <div class="col-md-8">
+                    <h4><strong>Country:</strong> {{ league.country }}</h4>
+                    <h4><strong>Year of Foundation:</strong> {{ league.year_of_foundation }}</h4>
+                    <h4><strong>Number of Teams:</strong> {{ league.number_of_teams }}</h4>
+
+                    <p class="league-description"><strong>Description:</strong> {{ league.description|default:"No description available" }}</p>
+
+                    {% if league.current_champion %}
+                        <p><strong>Current Champion:</strong> {{ league.current_champion }}</p>
+                    {% else %}
+                        <p><strong>Current Champion:</strong> Information not available</p>
+                    {% endif %}
+
+                    <!-- Website link -->
+                    {% if league.website %}
+                        <p><strong>Website:</strong> <a href="{{ league.website }}" target="_blank" class="btn btn-custom btn-sm">Visit Website</a></p>
+                    {% else %}
+                        <p><strong>Website:</strong> No website available</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

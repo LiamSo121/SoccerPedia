@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Teams{% endblock %}
+
+{% load static %}
+{% block custom_css %}
+    <link href="{% static 'team/team_list.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center my-5">Teams</h1>
+        <p class="text-center info-text">Click on a team logo to view more details about the team.</p>
+
+        <div class="row justify-content-center">
+            {% for team in teams %}
+            <div class="col-md-4 col-sm-6">
+                <div class="team-card">
+                    <a href="{% url 'selected_team' team.name %}">
+                        {% if team.logo %}
+                            <img src="{{ team.logo.url }}" alt="{{ team.name }} Logo" class="team-logo">
+                        {% else %}
+                            <img src="/static/images/default_team_logo.png" alt="Default Logo" class="team-logo">
+                        {% endif %}
+                    </a>
+                    <h3>{{ team.name }}</h3>
+                    <p>Founded: {{ team.year_of_foundation }}</p>
+                    <p>League: {{ team.league.name }}</p>
+                    <p>Stadium: {{ team.stadium_name }}</p>
+                    <p>
+                        <a href="{{ team.website }}" target="_blank" rel="noopener noreferrer" class="btn btn-link">Visit Official Website</a>
+                    </p>
+                    <a href="{% url 'selected_team' team.name %}" class="btn-view">View Team</a>
+                    <a href="{% url 'get_team_info' team.name %}" class="btn-info">View News</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mb-4">
+            <a href="/" class="btn btn-primary me-2">Home</a>
+        </div>
+        <div class="text-center mb-4">
+            <a href="{% url 'create_team' %}" class="btn btn-primary me-2">Create New Team</a>
+        </div>
+    </div>
+{% endblock %}

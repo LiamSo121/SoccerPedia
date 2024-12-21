@@ -1,0 +1,72 @@
+/* Interactive background */
+body {
+    background: linear-gradient(45deg, #f3f4f6, #d1e7ff);
+    animation: backgroundAnimation 5s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(45deg, #f3f4f6, #d1e7ff);
+    }
+    50% {
+        background: linear-gradient(45deg, #d1e7ff, #f3f4f6);
+    }
+    100% {
+        background: linear-gradient(45deg, #f3f4f6, #d1e7ff);
+    }
+}
+
+/* Style for team cards */
+.team-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.team-logo {
+    max-width: 100%;
+    max-height: 200px;
+    margin-bottom: 10px;
+}
+
+/* Button Styling */
+.btn-view, .btn-info {
+    background-color: #007bff;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-view:hover, .btn-info:hover {
+    background-color: #0056b3;
+}
+
+/* Button for home */
+.btn-home {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-home:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-card {
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* News Section */
+.news-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.news-item img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.news-content h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.news-content p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.news-content a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-content a:hover {
+    text-decoration: underline;
+}
+
+.source {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.source img {
+    max-width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+/* Videos Section */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    background: white;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col {
+    flex: 1 1 calc(33.333% - 20px);
+}
+
+iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 8px;
+}
+
+.text-center {
+    text-align: center;
+    color: #555;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Footer Buttons */
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.footer-buttons a {
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+}
+
+.footer-buttons a:hover {
+    background-color: #0056b3;
+}
