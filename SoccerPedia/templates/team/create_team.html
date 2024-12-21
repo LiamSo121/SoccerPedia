@@ -1,32 +1,34 @@
+{% extends "base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Team</title>
+
+{% block title %}Create New Team{% endblock %}
+
+{% block custom_css %}
     <link href="{% static 'team/create_team.css' %}" rel="stylesheet">
-</head>
-<body>
-    <div class="course-form">
-        <h2>Create New Team</h2>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
+{% endblock %}
 
-            <!-- Render TeamForm fields -->
-            {{ form.as_p }}
+{% block content %}
+    <div class="container mt-5">
+        <div class="course-form">
+            <h2 class="mb-4">Create New Team</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
 
-            <!-- Render YouTube Video fields (formset) -->
-            <h3>YouTube Videos</h3>
-            {{ formset.management_form }}
-            {% for form in formset %}
-                <div class="mb-3">
-                    {{ form.as_p }}
-                </div>
-            {% endfor %}
+                <!-- Render TeamForm fields -->
+                {{ form.as_p }}
 
-            <button type="submit" class="btn btn-primary">Register Team</button>
-        </form>
+                <!-- Render YouTube Video fields (formset) -->
+                <h3>YouTube Videos</h3>
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    <div class="mb-3">
+                        {{ form.as_p }}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">Register Team</button>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+{% endblock %}

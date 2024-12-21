@@ -1,30 +1,63 @@
-body {
-    background-color: #f4f7f6;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Ensure that the body and html take the full height */
+html, body {
+    height: 100%;
+    margin: 0;
     font-family: Arial, sans-serif;
 }
 
+/* Flexbox layout for body */
+body {
+    background-color: #f4f7f6;
+    display: flex;
+    flex-direction: column;  /* Stack elements vertically */
+    justify-content: space-between; /* Space out the content and footer */
+    min-height: 100vh; /* Full viewport height */
+    text-align: center; /* Center all text by default */
+}
+
+/* Container for the main content */
+.container {
+    flex-grow: 1; /* Ensure the content grows to take available space */
+    padding: 20px; /* Add padding for better layout */
+}
+
+/* Styling for the footer */
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+    width: 100%; /* Full width */
+    position: relative;
+}
+
+.footer .container {
+    width: 100%; /* Ensure the footer content spans full width */
+    text-align: center; /* Center text in footer */
+}
+
+/* Card Styles */
 .card {
     width: 80%;
     max-width: 900px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Center the card */
 }
 
+/* Card Header Styles */
 .card-header {
     background-color: #007bff;
     color: white;
     font-size: 1.5rem;
-    text-align: center;
+    text-align: center; /* Center text inside card header */
 }
 
+/* Card Body Styles */
 .card-body {
     background-color: #ffffff;
     padding: 30px;
 }
 
+/* League Logo */
 .league-logo {
     width: 150px;
     height: auto;
@@ -32,11 +65,14 @@ body {
     margin: 20px 0;
 }
 
+/* League Description Styles */
 .league-description {
     font-style: italic;
     color: #666;
+    text-align: center; /* Center the description text */
 }
 
+/* Button Styles */
 .btn-custom {
     background-color: #007bff;
     color: white;
@@ -45,6 +81,8 @@ body {
     text-transform: uppercase;
     font-weight: bold;
     transition: background-color 0.3s, transform 0.3s;
+    display: inline-block; /* Allow buttons to sit inline */
+    margin: 5px; /* Add spacing between buttons */
 }
 
 .btn-custom:hover {
@@ -52,9 +90,15 @@ body {
     transform: translateY(-2px);
 }
 
+/* Button Container */
 .btn-container {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-bottom: 20px;
+}
+
+/* Center Footer Content */
+.footer p {
+    margin: 0;
 }

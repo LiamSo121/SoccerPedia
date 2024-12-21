@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football News</title>
-    <!-- Load static files -->
-    {% load static %}
-    <!-- Link to the external CSS file -->
-    <link href="{% static 'league/league_news.css' %}" rel="stylesheet">
-</head>
-<body>
+{% extends 'base.html' %}
 
+{% load static %}
+{% block title %}
+Football News
+{% endblock %}
+
+{% block custom_css %}
+<link href="{% static 'league/league_news.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
 <div class="container">
     <h1>Latest Football News</h1>
     {% if news %}
@@ -19,12 +18,7 @@
                 <img src="{{ article.imageUrl }}" alt="{{ article.title }}">
                 <div class="content">
                     <h2>{{ article.title }}</h2>
-<!--                    <p>{{ article.title }}</p>-->
                     <a href="{{ article.page.url }}" target="_blank" class="btn-read-more">Read more</a>
-<!--                    <div class="source">-->
-<!--                        <img src="{{ article.sourceIconUrl }}" alt="{{ article.sourceStr }}">-->
-<!--                        <span>{{ article.sourceStr }}</span>-->
-<!--                    </div>-->
                 </div>
             </div>
         {% endfor %}
@@ -35,8 +29,5 @@
         <a href="/" class="btn btn-primary">Home</a>
         <a href="{% url 'present_leagues' %}" class="btn btn-primary">Return to League Selection</a>
     </div>
-
 </div>
-
-</body>
-</html>
+{% endblock %}

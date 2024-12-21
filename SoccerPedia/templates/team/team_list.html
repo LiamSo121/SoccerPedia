@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teams</title>
-    <!-- Load static files -->
-    {% load static %}
-    <!-- Link to the external CSS file -->
+{% extends 'base.html' %}
+
+{% block title %}Teams{% endblock %}
+
+{% load static %}
+{% block custom_css %}
     <link href="{% static 'team/team_list.css' %}" rel="stylesheet">
-    <!-- Add Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="container">
         <h1 class="text-center my-5">Teams</h1>
         <p class="text-center info-text">Click on a team logo to view more details about the team.</p>
@@ -47,8 +43,4 @@
             <a href="{% url 'create_team' %}" class="btn btn-primary me-2">Create New Team</a>
         </div>
     </div>
-
-    <!-- Add Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}

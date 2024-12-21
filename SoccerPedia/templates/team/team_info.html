@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News and Videos</title>
-    <!-- Load static files -->
-    {% load static %}
-    <!-- Link to the external CSS file -->
+{% extends 'base.html' %}
+{% load static %}
+{% block custom_css %}
     <link href="{% static 'team/team_info.css' %}" rel="stylesheet">
-</head>
-<body>
+{% endblock %}
+{% block title %}Team Info - {{ team.name }}{% endblock %}
+
+{% block content %}
     <div class="container">
-        <h1>News and Videos</h1>
+        <h1>{{ team.name }} News and Videos</h1>
 
         <!-- News Section -->
         <h2>Latest News</h2>
@@ -69,5 +65,4 @@
         <a href="/" class="btn-home">Home</a>
         <a href="/team/" class="btn-teams">Back To Teams</a>
     </div>
-</body>
-</html>
+{% endblock %}

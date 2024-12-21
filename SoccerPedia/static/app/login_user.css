@@ -1,14 +1,13 @@
-/* styles.css */
-
 /* Body styling */
 body {
-    background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background for the form */
+    font-family: Arial, sans-serif; /* Clean and modern font */
 }
 
 /* Container styling */
 .container {
-    max-width: 500px;
+    max-width: 600px; /* Ensure form is not too wide */
+    padding: 0 15px; /* Add some padding to prevent touching the sides */
 }
 
 /* Card styling */
@@ -18,24 +17,24 @@ body {
 
 /* Card header styling */
 .card-header {
-    background-color: #007bff;
+    background-color: #007bff; /* Blue background */
     color: white;
     text-align: center;
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
 }
 
 /* Form styling */
 .form-label {
-    font-weight: bold;
+    font-weight: bold; /* Make labels bold */
 }
 
 .form-control {
-    border-radius: 4px;
+    border-radius: 4px; /* Rounded input fields */
 }
 
 /* Button styling */
 .btn {
-    width: 48%;
+    width: 48%; /* Ensure buttons are the same size */
 }
 
 .btn-success {

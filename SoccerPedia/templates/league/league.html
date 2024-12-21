@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ league.name }} - League Details</title>
-    <!-- Load static files -->
-    {% load static %}
-    <!-- Link to the external CSS file -->
+{% extends 'base.html' %}
+
+{% block title %}{{ league.name }} - League Details{% endblock %}
+{% load static %}
+{% block custom_css %}
     <link href="{% static 'league/league.css' %}" rel="stylesheet">
-</head>
-<body>
+{% endblock %}
+{% block content %}
     <div class="card shadow-lg">
         <div class="card-header">
             <h2>{{ league.name }} - League Details</h2>
@@ -57,9 +53,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybINQGvmh6JdczI6ZpH9opjFfZZzYq5RO1Q5IN8T6e7n0rUZZz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0sNr1RUM25b2C00W9RekeJmft0gI88auR5H5AnDCMJK6l+r6" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}
