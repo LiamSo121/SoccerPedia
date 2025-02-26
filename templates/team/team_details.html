@@ -11,9 +11,9 @@
 {% block content %}
     <div class="container mt-5">
         <div class="team-details-card">
-            <h1 class="team-name">{{ team.name }}</h1>
+            <h1 class="team-name text-center">{{ team.name }}</h1>
 
-            <div class="team-info">
+            <div class="team-info text-center">
                 <p><strong>Year of Foundation:</strong> {{ team.year_of_foundation }}</p>
                 <p><strong>Trophies:</strong> {{ team.number_of_trophies }}</p>
                 <p><strong>Country:</strong> {{ team.league.country }}</p>
@@ -23,17 +23,48 @@
             </div>
 
             {% if team.logo %}
-                <img src="{{ team.logo.url }}" alt="{{ team.name }} Logo" class="team-logo">
+                <div class="text-center">
+                    <img src="{{ team.logo.url }}" alt="{{ team.name }} Logo" class="team-logo">
+                </div>
             {% else %}
-                <p>No logo available</p>
+                <p class="text-center">No logo available</p>
             {% endif %}
 
             {% if team.website %}
-                <p><a href="{{ team.website }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Official Website</a></p>
+                <div class="text-center">
+                    <p><a href="{{ team.website }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Official Website</a></p>
+                </div>
             {% endif %}
 
+            <!-- Reviews Section -->
+            <div class="reviews-section mt-4">
+                <h2 class="text-center">Reviews</h2>
+
+                {% if team.team_reviews.all %}
+                    <div class="reviews-list">
+                        {% for review in team.team_reviews.all %}
+                            <div class="review-box">
+                                <p class="review-stars"><strong>Rating:</strong> {{ review.stars }} Stars</p>
+                                <p class="review-content">{{ review.content }}</p>
+                                <!-- Display review image if it exists -->
+                                {% if review.image %}
+                                    <div class="review-image text-center mt-3">
+                                        <img src="{{ review.image.url }}" alt="Review Image" class="img-fluid">
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-center">No reviews available for this team.</p>
+                {% endif %}
+            </div>
+
             <!-- Back to Team List Button -->
-            <a href="{% url 'team_list' %}" class="btn btn-secondary btn-back">Back to Team List</a>
+            <div class="text-center mt-3">
+                <a href="{% url 'team_list' %}" class="btn btn-secondary btn-back">Back to Team List</a>
+                <a href="{% url 'create_review' %}" class="btn btn-secondary btn-back">Create New Review</a>
+            </div>
         </div>
     </div>
 {% endblock %}

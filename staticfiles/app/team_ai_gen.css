@@ -1,0 +1,98 @@
+/* Style the team summary and answer sections */
+#team-summary, #answer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif; /* Set a clean font */
+    font-size: 1.1rem; /* Adjust font size for readability */
+    line-height: 1.6; /* Improve line spacing */
+    text-align: left;
+    word-wrap: break-word;
+}
+
+/* Add a subtle title style for team summaries and answers */
+#team-summary h2, #answer h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* Style for team summary content */
+.team-summary-text {
+    font-family: 'Verdana', sans-serif;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Add visual breaks and space for content */
+.team-summary-text p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Adding bullet points and list styles */
+.team-summary-text ul {
+    margin-bottom: 15px;
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #555;
+}
+
+.team-summary-text li {
+    margin-bottom: 8px;
+}
+
+/* Add hover effect for readability and interaction */
+.team-summary-text:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Add specific styles for answer and team summary */
+#answer .team-summary-text, #team-summary .team-summary-text {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-left: 5px solid #007bff;
+    border-radius: 8px;
+}
+
+/* Ensure inputs and buttons remain clean and modern */
+#question {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+#question:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#generate-team, #ask-question {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+#generate-team:hover, #ask-question:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}
+
+#ask-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
