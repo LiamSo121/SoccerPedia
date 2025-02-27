@@ -11,7 +11,7 @@
     <div class="container">
         <!-- Form Container -->
         <div class="form-container">
-            <h1 class="text-center">Select a Country to View Leagues</h1>
+            <h1 class="text-center">Select a Country to View League</h1>
             <!-- Form for selecting country -->
             {% if messages %}
             <div class="alert alert-warning" role="alert">
@@ -23,36 +23,11 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="d-flex justify-content-center flex-wrap">
-                    <button type="submit" name="country" value="USA" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/us.png" alt="USA Flag"> USA
-                    </button>
-                    <button type="submit" name="country" value="England" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/gb.png" alt="England Flag"> England
-                    </button>
-                    <button type="submit" name="country" value="Spain" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/es.png" alt="Spain Flag"> Spain
-                    </button>
-                    <button type="submit" name="country" value="Germany" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag"> Germany
-                    </button>
-                    <button type="submit" name="country" value="Israel" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/il.png" alt="Israel Flag"> Israel
-                    </button>
-                    <button type="submit" name="country" value="Brazil" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/br.png" alt="Brazil Flag"> Brazil
-                    </button>
-                    <button type="submit" name="country" value="Italy" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/it.png" alt="Italy Flag"> Italy
-                    </button>
-                    <button type="submit" name="country" value="France" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/fr.png" alt="France Flag"> France
-                    </button>
-                    <button type="submit" name="country" value="Netherlands" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/nl.png" alt="Netherlands Flag"> Netherlands
-                    </button>
-                    <button type="submit" name="country" value="Portugal" class="btn btn-primary btn-country">
-                        <img src="https://flagcdn.com/w320/pt.png" alt="Portugal Flag"> Portugal
-                    </button>
+                    {% for country, flag_url in countries_dict.items %}
+                        <button type="submit" name="country" value="{{ country }}" class="btn btn-primary btn-country">
+                            <img src="{{ flag_url }}" alt="{{ country }} Flag"> {{ country }}
+                        </button>
+                    {% endfor %}
                 </div>
             </form>
         </div>
@@ -61,5 +36,6 @@
     <!-- Home Button at the bottom -->
     <div class="home-button-container">
         <a href="/" class="btn-home">Home</a>
+        <a href="/league/create" class="btn-home">Create League</a>
     </div>
 {% endblock %}

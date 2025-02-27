@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Football League AI{% endblock %}
+{% load static %}
+{% block custom_css %}
+    <link href="{% static 'app/league_ai_gen.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Football League AI</h1>
+
+    <!-- Generate League Button -->
+    <button id="generate-league" class="btn btn-primary">Generate Random League</button>
+
+    <!-- Display League Summary -->
+    <div id="league-summary" class="my-4"></div>
+
+    <!-- Ask Question Section -->
+    <div id="question-form">
+        <label id="ask-text" for="question">Ask a question about the league:</label>
+        <input type="text" id="question" class="form-control" placeholder="Enter your question">
+        <button id="ask-question" class="btn btn-primary">Ask</button>
+<!--        <a href="/ai/league/create" class="btn btn-primary btn-lg">Explore Teams</a>-->
+    </div>
+
+    <!-- Display Answer -->
+    <div id="answer" class="my-4"></div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Clear the answer div when the page is loaded
+        $('#answer').html('');
+
+        // Generate random league
+        $('#generate-league').click(function() {
+            $.ajax({
+                url: '{% url "generate_league" %}',
+                type: 'GET',
+                success: function(response) {
+                    $('#league-summary').html('<div class="league-summary-text">' + response.league_summary + '</div>');
+                },
+                error: function() {
+                    alert('Error generating the league!');
+                }
+            });
+        });
+
+        // Ask question
+        $('#ask-question').click(function() {
+            const question = $('#question').val();
+            if (!question) {
+                alert('Please enter a question!');
+                return;
+            }
+
+            // Clear the text in the text field
+            $('#question').val('');
+
+            $.ajax({
+                url: '{% url "ask_league_question" %}',
+                type: 'GET',
+                data: { 'question': question },
+                success: function(response) {
+                    $('#answer').html('<div class="league-summary-text">' + response.answer + '</div>');
+                },
+                error: function() {
+                    alert('Error asking the question!');
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

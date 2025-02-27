@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Generate Image{% endblock %}
+{% load static %}
+
+{% block custom_css %}
+    <link href="{% static 'app/generate_image.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Generate Image from Prompt</h1>
+
+    <!-- Image Generation Form -->
+    <form id="image-form" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="prompt">Enter a prompt to generate an image:</label>
+            <input type="text" id="prompt" name="prompt" class="form-control" placeholder="e.g., Astronaut riding a horse" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generate Image</button>
+    </form>
+
+    <!-- Display Generated Image -->
+        {% if image_url %}
+                <p class="d-flex justify-content-center mt-3">
+                <a href="{{ image_url }}" download="ai_generated_image.png" class="btn btn-success mt-3">Download Image</a>
+                </p>
+        {% endif %}
+
+</div>
+{% endblock %}
