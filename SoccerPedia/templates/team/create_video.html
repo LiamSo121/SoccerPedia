@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Create New Video{% endblock %}
+
+{% block custom_css %}
+    <link href="{% static 'team/create_team.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="course-form">
+            <h2 class="mb-4">Create New Video</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Render TeamForm fields -->
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

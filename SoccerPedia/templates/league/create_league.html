@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Create New League{% endblock %}
+
+{% block custom_css %}
+    <link href="{% static 'league/create_league.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="course-form">
+            <h2 class="mb-4">Create New League</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Register League</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

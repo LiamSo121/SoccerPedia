@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Team, YoutubeVideo
+from .models import Team, YoutubeVideo, Review
 
 # Create a formset for YoutubeVideos linked to a Team
 class YoutubeVideoForm(forms.ModelForm):
@@ -17,3 +17,19 @@ class TeamForm(forms.ModelForm):
     class Meta:
         model = Team
         fields = "__all__"
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = "__all__"
+
+
+class VideoForm(forms.ModelForm):
+    class Meta:
+        model = YoutubeVideo
+        fields = '__all__'
+
+
+
+
+

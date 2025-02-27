@@ -11,14 +11,14 @@ class Standings:
 
     def league_mapper(self,country):
         data = {
-            'England': 'PL',
+            'United Kingdom': 'PL',
             'Germany': 'BL1',
             'France': 'FL1',
             'Italy': 'SA',
             'Spain': 'PD',
             'Brazil': 'BSA',
             'Portugal': 'PPL',
-            'Nethelands': 'DED'
+            'Netherlands': 'DED'
         }
 
         if country in data.keys():
