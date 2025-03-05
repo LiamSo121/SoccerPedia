@@ -47,6 +47,11 @@ INSTALLED_APPS = [
     'chat',
     'corsheaders',
     'rest_framework_simplejwt',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
 ]
 
@@ -60,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 CORS_ALLOW_CREDENTIALS = True
@@ -77,12 +83,37 @@ CHANNEL_LAYERS = {
 }
 AUTH_USER_MODEL = 'users.CustomUser'
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        'OAUTH_PKCE_ENABLED': True,
+        'APP':{
+            'client_id': '162811736026-a7vrks96on86sjtud570arpclgvm023d.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+# LOGIN_URL = '/'
+# LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+SITE_ID = 1
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
@@ -209,5 +240,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'user_login'
-CUSTOM_LOGIN_REQUIRED_MESSAGE = "You must be logged in to access this page."
+# LOGIN_URL = 'user_login'
+# CUSTOM_LOGIN_REQUIRED_MESSAGE = "You must be logged in to access this page."

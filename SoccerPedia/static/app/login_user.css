@@ -61,3 +61,32 @@ body {
 .alert {
     margin-top: 10px;
 }
+
+/* Google login button styling */
+.btn-google {
+    background-color: #4285f4; /* Google's blue */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100%; /* Make it span the full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-google:hover {
+    background-color: #357ae8; /* Darker blue on hover */
+}
+
+.google-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+span {
+    font-weight: normal;
+    font-size: 16px;
+}

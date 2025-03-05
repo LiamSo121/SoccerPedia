@@ -27,6 +27,7 @@ urlpatterns = [
     path('',include('users.urls')),
     path('',include('chat.urls')),
     path('',include('App.urls')),
+    path('accounts/', include('allauth.urls')),
     path('league/',include('League.urls')),
     path('team/',include('Team.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

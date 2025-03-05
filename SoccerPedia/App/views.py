@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
 from .AI_Generator import AI
 import json
+# from App.CustomUserForm import CustomUserForm
 
 ai = AI()
 User = get_user_model()
@@ -39,6 +40,15 @@ def user_logout(request):
 
 
 def register(request):
+    # if request.method == 'POST':
+    #     form = LeagueForm(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         league = form.save()
+    # else:
+    #     form = CustomUserForm()
+    #     return render(request, 'app/create_user.html', {'form': form})
+
+
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Form Submission{% endblock %}
+{% load static %}
+{% load socialaccount %}
+
+{% block custom_css %}
+    <link href="{% static 'app/register_user.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header text-black text-center custom-header">
+                        <h3>Enter User Details</h3>
+                    </div>
+                    <div class="card-body">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="additional_info" class="form-label">Additional Information</label>
+                                <textarea class="form-control" id="additional_info" name="additional_info" rows="3" placeholder="Enter any additional information"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                                <a href="/" class="btn btn-primary">Home</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center my-5">
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% provider_login_url 'google' %}" class="btn-google d-flex align-items-center justify-content-center px-4 py-2 rounded shadow">
+                <img src="{% static 'app/google-logo.png' %}" alt="Google Logo" class="google-icon me-2" width="24">
+                <span class="fw-bold">Login with Google</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,43 +1,60 @@
 {% extends 'base.html' %}
 
 {% block title %}Welcome to Soccer Pedia{% endblock %}
-
+{% load socialaccount %}
+{% load static %}
 {% block content %}
     <!-- Hero Section -->
     <div class="container text-center my-5">
         <img src="https://soccerpedia.s3.us-east-1.amazonaws.com/media/images/logo.png" alt="Soccer Pedia Logo" width="120" class="mb-4">
-        <h1 class="display-4">Welcome to Soccer Pedia</h1>
-        <p class="lead">Your ultimate source for information about soccer leagues and teams from around the globe.</p>
-        <a href="/league" class="btn btn-primary btn-lg">Explore Leagues</a>
-        <a href="/swagger" class="btn btn-primary btn-lg">Explore Swagger Docs</a>
-        <a href="/team" class="btn btn-primary btn-lg">Explore Teams</a>
-        <BR>
-        <div class="container text-center my-5">
-            <p style="font-weight: bold; color: red; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); font-family: 'Arial', sans-serif; letter-spacing: 1px; font-size: 1.5rem; text-transform: uppercase; text-align: center; margin-top: 20px;">
-                Get to know our new AI features
-            </p>
-            <a href="/ai/team" class="btn btn-primary btn-lg">Team AI</a>
-            <a href="/ai/league" class="btn btn-primary btn-lg">League AI</a>
-            <a href="/ai/generateimage" class="btn btn-primary btn-lg">Generate New Image</a>
-            <p style="font-weight: bold; color: red; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); font-family: 'Arial', sans-serif; letter-spacing: 1px; font-size: 1.5rem; text-transform: uppercase; text-align: center; margin-top: 20px;">
-                New On Our Website - Live Chat - discuss all soccer related only on Soccer Pedia Chat!
-            </p>
-            <a href="/chat" class="btn btn-primary btn-lg">Go To Chat</a>
+        <h1 class="display-4 fw-bold text-primary">Welcome to Soccer Pedia</h1>
+        <p class="lead text-muted">Your ultimate source for information about soccer leagues and teams from around the globe.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
+            <a href="/league" class="btn btn-outline-primary btn-lg">Explore Leagues</a>
+            <a href="/swagger" class="btn btn-outline-secondary btn-lg">Explore Swagger Docs</a>
+            <a href="/team" class="btn btn-outline-success btn-lg">Explore Teams</a>
+        </div>
+    </div>
+
+    <!-- AI Features Section -->
+    <div class="container text-center my-5">
+        <p class="fw-bold text-danger text-uppercase fs-4">Get to know our new AI features</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="/ai/team" class="btn btn-warning btn-lg">Team AI</a>
+            <a href="/ai/league" class="btn btn-info btn-lg">League AI</a>
+            <a href="/ai/generateimage" class="btn btn-dark btn-lg">Generate New Image</a>
+        </div>
+    </div>
+
+    <!-- Chat Feature -->
+    <div class="container text-center my-5">
+        <p class="fw-bold text-danger text-uppercase fs-4">New On Our Website - Live Chat</p>
+        <a href="/chat" class="btn btn-success btn-lg">Go To Chat</a>
+    </div>
+
+    <!-- Google Login Button -->
+    <div class="container text-center my-5">
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% provider_login_url 'google' %}" class="btn-google d-flex align-items-center justify-content-center px-4 py-2 rounded shadow">
+                <img src="{% static 'app/google-logo.png' %}" alt="Google Logo" class="google-icon me-2" width="24">
+                <span class="fw-bold">Login with Google</span>
+            </a>
         </div>
     </div>
 
     <!-- About Section -->
     <div id="about" class="container my-5">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-md-6">
-                <img src="https://soccerpedia.s3.us-east-1.amazonaws.com/media/images/ball.jpg" alt="Soccer Illustration" class="img-fluid rounded">
+                <img src="https://soccerpedia.s3.us-east-1.amazonaws.com/media/images/ball.jpg" alt="Soccer Illustration" class="img-fluid rounded shadow-lg">
             </div>
             <div class="col-md-6">
-                <h2>About Soccer Pedia</h2>
-                <p>All about international soccer</p>
+                <h2 class="fw-bold text-primary">About Soccer Pedia</h2>
+                <p class="text-muted">All about international soccer</p>
                 <p>Soccer Pedia is your one-stop destination for all things soccer. Discover in-depth information about soccer leagues worldwide, from the top-tier European competitions to local leagues in every corner of the world. Stay updated with detailed information about your favorite teams, their history, and their achievements.</p>
                 <p>Whether you are a soccer enthusiast or just getting into the beautiful game, Soccer Pedia has something for you!</p>
             </div>
         </div>
     </div>
+
 {% endblock %}
