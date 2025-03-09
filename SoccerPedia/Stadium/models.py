@@ -5,6 +5,9 @@ class Stadium(models.Model):
     club = models.CharField(max_length=255)
     latitude = models.FloatField()
     longitude = models.FloatField()
+    city = models.CharField(max_length=255)
+    capacity = models.FloatField()
+
 
 
     def __str__(self):
