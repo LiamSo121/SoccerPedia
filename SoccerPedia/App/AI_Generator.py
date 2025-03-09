@@ -12,13 +12,14 @@ import io
 import json
 from PIL import Image
 from SoccerPedia.S3 import S3
+from django.conf import settings
 
 app_helper = App_Helper()
 s3 = S3()
 
 class AI(View):
     def __init__(self):
-        self.client = openai.OpenAI(api_key="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")
+        self.client = openai.OpenAI(api_key=settings.AI_API_KEY)
         self.current_team_summary = None
         self.current_league_summary = None
         self.image_base_url = "https://api-inference.huggingface.co/models/ZB-Tech/Text-to-Image"

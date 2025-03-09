@@ -1,11 +1,19 @@
 from pathlib import Path
 import os
 import psycopg2
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+AI_API_KEY = os.getenv("AI_API_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-AWS_ACCESS_KEY_ID = 'AKIAWZU7GEQT2URYL2SP'
-AWS_SECRET_ACCESS_KEY = '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'
+
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = 'soccerpedia'
 AWS_S3_REGION_NAME = 'us-east-1'
 AWS_QUERYSTRING_AUTH = False
@@ -52,6 +60,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'Stadium'
 
 ]
 
@@ -94,8 +103,8 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {'access_type': 'online'},
         'OAUTH_PKCE_ENABLED': True,
         'APP':{
-            'client_id': '162811736026-a7vrks96on86sjtud570arpclgvm023d.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': os.getenv("GOOGLE_CLIENT_ID"),
+            'secret': os.getenv("GOOGLE_SECRET"),
             'key': ''
         }
     }
